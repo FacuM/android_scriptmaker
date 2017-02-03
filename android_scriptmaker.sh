@@ -39,19 +39,7 @@ then
 fi
 if [ "$RUNSCRIPT" = 'yes' ]
  then
- echo "Okay! We're going to do some test, just to make sure your device supports: tee, grep, wc and cat."
- echo "##############"
- echo "Testing 'tee'"
- echo "##############"
- echo "test" | tee /sdcard/testtee > /dev/null 2>&1
- if [ $? -eq 0 ]
-  then
-  echo "'tee' is working :-)"
- else
-  echo "Nope, no 'tee'. Please install it and try again."
-  rm -f /sdcard/testee
-  exit 1
- fi
+ echo "Okay! We're going to do some test, just to make sure your device supports: grep, wc and cat."
  echo "##############"
  echo "Testing 'grep'"
  echo "##############"
@@ -77,13 +65,14 @@ if [ "$RUNSCRIPT" = 'yes' ]
  echo "##############"
  echo "Testing 'cat'"
  echo "##############"
- cat /sdcard/testtee > /dev/null 2>&1
+ echo "test" > /sdcard/testcat
+ cat /sdcard/testcat > /dev/null 2>&1
  if [ $? -eq 0 ]
   then
   echo "'cat' is working :-)"
  else
   echo "Nope, no 'cat'. Please install it and try again."
-  rm -f /sdcard/testtee
+  rm -f /sdcard/testcat
   exit 1
  fi
  echo "##############"
@@ -107,7 +96,6 @@ if [ "$RUNSCRIPT" = 'yes' ]
  else
   echo "Nope, no 'find'. Please install it and try again."
  fi
- rm -f /sdcard/testee
 fi
 if [ "$RUNSCRIPT" = 'yes' ]
  then
