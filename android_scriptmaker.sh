@@ -40,7 +40,7 @@ if [ $RUNSCRIPT = 'yes' ]
  echo "##############"
  echo "Testing 'tee'"
  echo "##############"
- echo "test" | tee /sdcard/testtee
+ echo "test" | tee /sdcard/testtee > /dev/null 2>&1
  if [ $? -eq 0 ]
   then
   echo "'tee' is working :-)"
@@ -49,7 +49,10 @@ if [ $RUNSCRIPT = 'yes' ]
   rm -f /sdcard/testee
   exit 1
  fi
- echo "test" | grep "test"
+ echo "##############"
+ echo "Testing 'grep'"
+ echo "##############"
+ echo "test" | grep "test" > /dev/null 2>&1
  if [ $? -eq 0 ]
   then
   echo "'grep' is working :-)"
@@ -57,7 +60,10 @@ if [ $RUNSCRIPT = 'yes' ]
   echo "Nope, no 'grep'. Please install it and try again."
   exit 1
  fi
- echo "test" | wc
+ echo "##############"
+ echo "Testing 'wc'"
+ echo "##############"
+ echo "test" | wc  > /dev/null 2>&1
  if [ $? -eq 0 ]
   then
   echo "'wc' is working :-)"
@@ -65,7 +71,10 @@ if [ $RUNSCRIPT = 'yes' ]
   echo "Nope, no 'wc'. Please install it and try again."
   exit 1
  fi
- cat /sdcard/testtee
+ echo "##############"
+ echo "Testing 'cat'"
+ echo "##############"
+ cat /sdcard/testtee > /dev/null 2>&1
  if [ $? -eq 0 ]
   then
   echo "'cat' is working :-)"
@@ -74,7 +83,10 @@ if [ $RUNSCRIPT = 'yes' ]
   rm -f /sdcard/testtee
   exit 1
  fi
- echo "test" | sed 's/test//'
+ echo "##############"
+ echo "Testing 'sed'"
+ echo "##############"
+ echo "test" | sed 's/test//' > /dev/null 2>&1
  if [ $? -eq 0 ]
   then
   echo "'sed' is working :-)"
@@ -82,6 +94,9 @@ if [ $RUNSCRIPT = 'yes' ]
   echo "Nope, no 'sed'. Please install it and try again."
   exit 1
  fi
+ echo "##############"
+ echo "Testing 'find'"
+ echo "##############"
  find /sdcard > /dev/null 2>&1
  if [ $? -eq 0 ]
  then
@@ -89,6 +104,7 @@ if [ $RUNSCRIPT = 'yes' ]
  else
   echo "Nope, no 'find'. Please install it and try again."
  fi
+ rm -f /sdcard/testee
 fi
 if [ "$RUNSCRIPT" = 'yes' ]
  then
