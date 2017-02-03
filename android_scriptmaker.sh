@@ -11,6 +11,8 @@ rm -f /sdcard/add-this-updater-script
 rm -f /sdcard/tempflist
 # By default, this won't be a forced run.
 FORCEDRUN=0
+# By default, we should be in root.
+WASNTINROOT=0
 if [ $PWD != "/" ]
 then
  WASNTINROOT=1
@@ -27,12 +29,12 @@ if [ "$(id -u)" -ne 0 ]
 then
  echo "WARNING: The script has detected that you're running it from a normal user (or at least not root). This might cause permissions problems while accessing to the required files. Are you still sure that you want to continue? Type 'yes' to continue: "
  read RUNSCRIPT
- if [ $RUNSCRIPT == 'yes' ]
+ if [ "$RUNSCRIPT" = 'yes' ]
  then
   FORCEDRUN=1
  fi
 fi
-if [ $RUNSCRIPT == 'yes' ]
+if [ $RUNSCRIPT = 'yes' ]
  then
  echo "Okay! We're going to do some test, just to make sure your device supports: tee, grep, wc and cat."
  echo "##############"
@@ -88,7 +90,7 @@ if [ $RUNSCRIPT == 'yes' ]
   echo "Nope, no 'find'. Please install it and try again."
  fi
 fi
-if [ $RUNSCRIPT == 'yes' ]
+if [ "$RUNSCRIPT" = 'yes' ]
  then
  FILES=./system/*
  FILEAM=`find $FILES | wc -l`
