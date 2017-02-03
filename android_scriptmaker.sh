@@ -25,16 +25,19 @@ echo "Welcome, this script will make a appendeable file for your already install
 echo "##############"
 echo "Please type 'yes' (without quotes) to continue: "
 read RUNSCRIPT
-if [ "$(id -u)" -ne 0 ]
+if [ "$RUNSCRIPT" = 'yes' ]
 then
- echo "WARNING: The script has detected that you're running it from a normal user (or at least not root). This might cause permissions problems while accessing to the required files. Are you still sure that you want to continue? Type 'yes' to continue: "
- read RUNSCRIPT
- if [ "$RUNSCRIPT" = 'yes' ]
+ if [ "$(id -u)" -ne 0 ]
  then
-  FORCEDRUN=1
+  echo "WARNING: The script has detected that you're running it from a normal user (or at least not root). This might cause permissions problems while accessing to the required files. Are you still sure that you want to continue? Type 'yes' to continue: "
+  read RUNSCRIPT
+  if [ "$RUNSCRIPT" = 'yes' ]
+  then
+   FORCEDRUN=1
+  fi
  fi
 fi
-if [ $RUNSCRIPT = 'yes' ]
+if [ "$RUNSCRIPT" = 'yes' ]
  then
  echo "Okay! We're going to do some test, just to make sure your device supports: tee, grep, wc and cat."
  echo "##############"
@@ -112,7 +115,7 @@ if [ "$RUNSCRIPT" = 'yes' ]
  FILEAM=`find $FILES | wc -l`
  FILEAMCUR=0
  printf "\n"
- for d in $(find $FILES | tee /sdcard/android_scriptmaker.log)
+ for d in $(find $FILES 2> /sdcard/android_scriptmaker.log)
  do
   FILEAMCUR=$(($FILEAMCUR + 1))
   CURFILE=`printf "$d" | sed 's-\.--'`
@@ -121,7 +124,7 @@ if [ "$RUNSCRIPT" = 'yes' ]
   printf "Processing: ($FILEAMCUR / $FILEAM)\r"
  done
  printf "\n"
- if [ $FORCEDRUN = 1 ]
+ if [ $FORCEDRUN -eq 1 ]
  then
   cat /sdcard/android_scriptmaker.log | grep "Permission denied"
   if [ $? = 0 ]
@@ -131,7 +134,7 @@ if [ "$RUNSCRIPT" = 'yes' ]
  else
   echo "All done. Enjoy your script ;)."
  fi
- if [ $WASNTINROOT = 1 ]
+ if [ $WASNTINROOT -eq 1 ]
  then
   echo "I remember you weren't in the root of your device and I took you by myself here. Bringing you back to home ;)."
   cd $STARTPATH
