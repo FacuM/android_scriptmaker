@@ -6,7 +6,7 @@ The idea behind this script is to be able to make a flashable .ZIP out of any RO
 
 **This script is COMPLETELY compatible with the Unix Shell without any previous modifications.**
 
-Required installed software: tee, grep, wc and cat. *The script will test if your device lacks support of any of them.*
+Required installed software: grep, wc and cat. *The script will test if your device lacks support of any of them.*
 
 ## Usage
 
