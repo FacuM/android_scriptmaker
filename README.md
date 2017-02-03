@@ -2,6 +2,8 @@
 
 **Android Scriptmaker** is a little software piece which is able to make the required lines to set the right permissions in a recovery script.
 
+The idea behind this script is to be able to make a flashable .ZIP out of any ROM, such as stock ROMs, custom ROMs that are unavailable anymore, etc.
+
 **This script is COMPLETELY compatible with the Unix Shell without any previous modifications.**
 
 Required installed software: tee, grep, wc and cat. *The script will test if your device lacks support of any of them.*
