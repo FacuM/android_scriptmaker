@@ -16,7 +16,7 @@ Required installed software: tee, grep, wc and cat. *The script will test if you
 
 * This step is completely optional, the script detects where you're automatically, but if you belive it's mandatory, do it: type *cd /* 
 
-* Type *sh /sdcard/android_scriptmaker*
+* Type *sh /sdcard/android_scriptmaker.sh*
 
 * Follow the steps described by the script (it has a really verbose output).
 
