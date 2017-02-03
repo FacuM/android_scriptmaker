@@ -12,7 +12,7 @@ Required installed software: tee, grep, wc and cat. *The script will test if you
 
 * Open a terminal app in your device (or run *adb shell* from your computer).
 
-* Type *cd /* . This step is completely optional, the script detects where you're automatically.
+* This step is completely optional, the script detects where you're automatically, but if you belive it's mandatory, do it: type *cd /* 
 
 * Type *sh /sdcard/android_scriptmaker*
 
