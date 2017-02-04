@@ -13,6 +13,12 @@ rm -f /sdcard/tempflist
 FORCEDRUN=0
 # By default, we should be in root.
 WASNTINROOT=0
+ls / | grep "sdcard"
+if [ $? -ne 0 ]
+then
+ echo "Hey! This isn't an Android device. This script only works on Android devices!"
+ exit 0
+fi
 if [ $PWD != "/" ]
 then
  WASNTINROOT=1
