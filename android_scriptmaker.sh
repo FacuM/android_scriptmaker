@@ -135,7 +135,7 @@ if [ "$RUNSCRIPT" = 'yes' ]
   printf "Processing: ($FILEAMCUR / $FILEAM)\r"
  done
  printf "\n"
- # If the user accepted to use the script anyways and wasn't root, try checking if any permissions error has been found.
+ # If the user accepted to use the script anyways and wasn't root, try checking if any permissions error have been found.
  if [ $FORCEDRUN -eq 1 ]
  then
   cat /sdcard/android_scriptmaker.log | grep "Permission denied"
