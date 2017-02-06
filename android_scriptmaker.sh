@@ -130,7 +130,7 @@ if [ "$RUNSCRIPT" = 'yes' ]
   # Get the current file from the looped variable and get it's permissions.
   PERMS=`stat -c '%A %a %n' $d | cut -d " " -f2`
   # Save data to the script.
-  printf "set_perm (1000, 1000, 0$PERMS, \"$CURFILE\");\n" >> /sdcard/add-this-updater-script
+  printf "set_perm (0, 0, 0$PERMS, \"$CURFILE\");\n" >> /sdcard/add-this-updater-script
   # Show process (don't generate new lines, just update the last line).
   printf "Processing: ($FILEAMCUR / $FILEAM)\r"
  done
